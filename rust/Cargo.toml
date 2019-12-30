@@ -1,0 +1,17 @@
+[package]
+name = "tnt"
+version = "0.1.0"
+authors = ["Oleg Utkin <oleg_utkin@me.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.104"
+serde_derive = "1.0.104"
+rmp-serde = "0.14.0"
+
+[lib]
+name = "rustproc"
+path = "src/lib.rs"
+crate-type = ["dylib"]
