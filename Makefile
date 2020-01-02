@@ -12,3 +12,6 @@ stop:
 
 run-test:
 	cd test && go run test
+
+console:
+	docker exec -it tnt console
