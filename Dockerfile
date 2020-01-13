@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:experimental
 FROM tarantool/tarantool:2.x-centos7 as base
 RUN yum install -y cmake make gcc gcc-c++ openssl
 RUN mkdir /opt/build
@@ -13,7 +14,7 @@ COPY rust/Cargo.toml .
 COPY rust/Cargo.lock .
 RUN cargo fetch
 COPY rust .
-RUN cargo build --release \
+RUN --mount=type=cache,target=/opt/rust/target cargo build --release \
     && mv /opt/rust/target/release/librustproc.so /opt/build
 
 
