@@ -1,12 +1,14 @@
 package main
 
 import (
+	"github.com/google/uuid"
 	"github.com/tarantool/go-tarantool"
 	"log"
 )
 
 type Args struct {
 	_msgpack      struct{} `msgpack:",asArray"`
+	UUID          string
 	SomeString    string
 	AnotherString string
 }
@@ -28,7 +30,13 @@ func main() {
 		log.Fatalln(err)
 	}
 
+	u, err := uuid.NewRandom()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
 	resp, err := conn.Call17("librustproc.rustproc", &Args{
+		UUID:          u.String(),
 		SomeString:    "some string",
 		AnotherString: "another string",
 	})
