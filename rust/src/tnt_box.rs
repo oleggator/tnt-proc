@@ -1,4 +1,4 @@
-use crate::tarantool::{BoxFunctionCtx, box_tuple_format_default, box_tuple_new, box_return_tuple, box_space_id_by_name, BOX_ID_NIL, box_replace, BoxTuple, box_error_set, box_tuple_ref, box_tuple_unref, box_error_last, BoxErrorype, box_error_message};
+use tarantool_rust_module::{BoxFunctionCtx, box_tuple_format_default, box_tuple_new, box_return_tuple, box_space_id_by_name, BOX_ID_NIL, box_replace, BoxTuple, box_error_set, box_tuple_ref, box_tuple_unref, box_error_last, BoxErrorype, box_error_message};
 use serde::Serialize;
 use std::os::raw::c_char;
 use std::{slice, fmt};

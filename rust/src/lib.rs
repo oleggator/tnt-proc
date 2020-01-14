@@ -4,9 +4,6 @@ extern crate serde;
 #[macro_use] extern crate serde_derive;
 extern crate rmp_serde as rmps;
 
-#[allow(dead_code)]
-mod tarantool;
-
 pub mod tnt_box;
 
 use tnt_box::{
@@ -15,11 +12,10 @@ use tnt_box::{
 };
 
 use std::os::raw::{c_int, c_char};
-use tarantool::{
-    BoxFunctionCtx,
-};
 use std::error::Error;
 use crate::tnt_box::replace;
+
+use tarantool_rust_module::BoxFunctionCtx;
 
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 struct Args<'a> {
