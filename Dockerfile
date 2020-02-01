@@ -33,11 +33,13 @@ FROM base as c-cpp-build
 
 WORKDIR /opt
 COPY c c
+COPY cpp cpp
 COPY CMakeLists.txt .
 
 RUN source scl_source enable devtoolset-8 \
     && cmake3 . \
     && cmake3 --build . \
+    && mv cpp/libcppproc.so /opt/build/libcppproc.so \
     && mv c/libcproc.so /opt/build/libcproc.so
 ####################################
 
@@ -48,6 +50,7 @@ FROM tarantool/tarantool:2.x-centos7
 WORKDIR /opt/tarantool
 COPY --from=rust-build /opt/build/librustproc.so .
 COPY --from=c-cpp-build /opt/build/libcproc.so .
+COPY --from=c-cpp-build /opt/build/libcppproc.so .
 
 COPY tarantool .
 ENV RUST_BACKTRACE 1
