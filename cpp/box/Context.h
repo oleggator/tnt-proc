@@ -17,7 +17,6 @@ private:
     box_function_ctx_t *ctx;
     const char *args, *args_end;
 
-    [[nodiscard]]
     size_t get_args_buf_len() const;
 
 public:
