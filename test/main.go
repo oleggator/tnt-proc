@@ -13,13 +13,12 @@ type Args struct {
 	AnotherString string
 }
 
-//func (s *Args) EncodeMsgpack(enc *msgpack.Encoder) error {
-//	if err := enc.EncodeArrayLen(1); err != nil {
-//		return err
-//	}
-//
-//	return enc.EncodeString(s.SomeString)
-//}
+const (
+	luaProc  = "luaproc"
+	cProc    = "libcproc.cproc"
+	cppProc  = "libcppproc.cppproc"
+	rustProc = "librustproc.rustproc"
+)
 
 func main() {
 	conn, err := tarantool.Connect("localhost:3301", tarantool.Opts{
@@ -35,7 +34,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	resp, err := conn.Call17("librustproc.rustproc", &Args{
+	resp, err := conn.Call17(cppProc, &Args{
 		UUID:          u.String(),
 		SomeString:    "some string",
 		AnotherString: "another string",

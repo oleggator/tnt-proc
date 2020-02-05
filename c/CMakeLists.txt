@@ -1,6 +1,7 @@
-project(myproject)
-cmake_minimum_required(VERSION 2.8)
+project(myproject C)
+cmake_minimum_required(VERSION 3.12)
 
-include_directories(/usr/local/include)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_library(cproc SHARED cproc.c)
+target_link_libraries(cproc msgpuck)

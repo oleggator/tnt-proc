@@ -14,6 +14,10 @@ space:create_index('primary', { parts = { 1, 'string' }, if_not_exists = true })
 box.schema.func.create('libcproc.cproc', { language = 'C', if_not_exists = true })
 box.schema.user.grant('guest', 'execute', 'function', 'libcproc.cproc', { if_not_exists = true })
 
+-- c function
+box.schema.func.create('libcppproc.cppproc', { language = 'C', if_not_exists = true })
+box.schema.user.grant('guest', 'execute', 'function', 'libcppproc.cppproc', { if_not_exists = true })
+
 -- rust function
 box.schema.func.create('librustproc.rustproc', { language = 'C', if_not_exists = true })
 box.schema.user.grant('guest', 'execute', 'function', 'librustproc.rustproc', { if_not_exists = true })
