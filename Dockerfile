@@ -5,7 +5,7 @@ FROM tarantool/tarantool:2.x-centos7 as base
 
 RUN yum install -y centos-release-scl scl-utils \
     && yum-config-manager --enable rhel-server-rhscl-7-rpms \
-    && yum install -y cmake3 make devtoolset-8-gcc devtoolset-8-gcc-c++ openssl msgpack-devel
+    && yum install -y cmake3 make devtoolset-8-gcc devtoolset-8-gcc-c++ openssl msgpack-devel msgpuck-devel
 RUN mkdir /opt/build
 ####################################
 
