@@ -1,9 +1,10 @@
 package main
 
 import (
+	"log"
+
 	"github.com/google/uuid"
 	"github.com/tarantool/go-tarantool"
-	"log"
 )
 
 type Args struct {
